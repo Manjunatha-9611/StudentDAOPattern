@@ -55,10 +55,10 @@ table tr button {
 </head>
 <body>
 <div id="heading">
-<h2>Update the student record :</h2>
+<h2>Delete the student record :</h2>
 </div>
 	<div id="container">
-		<form action="updateStudent" method="post">
+		<form action="delete" method="post">
 			<table>
 				<tr>
 					<td>Enter the student id :</td>
@@ -77,7 +77,7 @@ table tr button {
 					<td><input type="email" name="email"></td>
 				</tr>
 				<tr>
-					<td><button type="submit">Update</button></td>
+					<td><button type="submit">Delete</button></td>
 				</tr>
 			</table>
 		</form>

@@ -13,7 +13,7 @@ body {
 }
 
 #container {
-	height: 630px;
+	height: 600px;
 	width: 650px;
 	background-color: #A2D5AC;
 	border: 1px solid lightgrey;
@@ -22,7 +22,7 @@ body {
 	padding: 10px;
 	position: relative;
 	left: 620px;
-	top: 20px;
+	top: 50px;
 }
 
 table tr {
@@ -66,8 +66,9 @@ input {
 	box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
 	position: relative;
 	left: 795px;
-	top: 10px;
+	top: 20px;
 	border: 2px solid lightgrey;
+	
 }
 
 #heading h1 {
@@ -80,7 +81,6 @@ a {
 	text-decoration: none;
 	position: relative;
 	left: 140px;
-	top:-20px;
 }
 
 img {
@@ -104,11 +104,7 @@ img {
 
 			<table>
 				<tr>
-					<td>Enter the USN :</td>
-					<td><input type="text" name="usn"></td>
-				</tr>
-				<tr>
-					<td>Enter the name :</td>
+					<td>Enter the username :</td>
 					<td><input type="text" name="username"></td>
 				</tr>
 				<tr>
@@ -146,22 +142,12 @@ img {
 		}
 		%>
 		<%
-		String s1 = (String) request.getAttribute("account-exists");
+		String s1 = (String) request.getAttribute("account-not-found");
 		%>
 		<%
 		if (s1 != null) {
 		%>
 		<h2 style="color: red"><%=s1%></h2>
-		<%
-		}
-		%>
-		<%
-		String s2 = (String) request.getAttribute("same-usn-msg");
-		%>
-		<%
-		if (s2 != null) {
-		%>
-		<h2 style="color: red"><%=s2%></h2>
 		<%
 		}
 		%>

@@ -2,17 +2,17 @@ package com.demo.dto;
 //DTO class is nothing but Encapsulation class
 //but dont say it has encapsulation class say it as -> DTO/POJO class
 public class Student {
-	private String id;
+	private Integer id;
 	private String name;
 	private String phone;
 	private String email;
 	private String password;
 	
 	
-	public String getId() {
-		return this.id;
+	public Integer getId() {
+		return id;
 	}
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {

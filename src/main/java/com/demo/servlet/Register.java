@@ -23,28 +23,21 @@ public class Register extends HttpServlet {
 
 		// This is the data / obj of student / obj of POJO
 		Student s = new Student();
-		if ((sdao.getStudentByEmail("usn") != null) && !sdao.getStudentById("usn").equals(req.getParameter("usn"))) {
-			if (sdao.getStudentByEmail(req.getParameter("email")) == null) {
-
-				if (req.getParameter("password").equals(req.getParameter("confirm"))) {
-					s.setId(req.getParameter("usn"));
-					s.setName(req.getParameter("username"));
-					s.setPhone(req.getParameter("phone"));
-					s.setEmail(req.getParameter("email"));
-					s.setPassword(req.getParameter("password"));
-					sdao.insertStudent(s);
-					req.setAttribute("success-msg", "User registered successfull");
-					req.getRequestDispatcher("Login.jsp").forward(req, resp);
-				} else {
-					req.setAttribute("password-mismatch", "Password mismatch!");
-					req.getRequestDispatcher("Register.jsp").forward(req, resp);
-				}
+		if (sdao.getStudentByEmail(req.getParameter("email"))==null) {
+			if (req.getParameter("password").equals(req.getParameter("confirm"))) {
+				s.setName(req.getParameter("username"));
+				s.setPhone(req.getParameter("phone"));
+				s.setEmail(req.getParameter("email"));
+				s.setPassword(req.getParameter("password"));
+				sdao.insertStudent(s);
+				req.setAttribute("success-msg", "User registered successfull");
+				req.getRequestDispatcher("Login.jsp").forward(req, resp);
 			} else {
-				req.setAttribute("account-exists", "Account exists");
+				req.setAttribute("password-mismatch", "Password mismatch!");
 				req.getRequestDispatcher("Register.jsp").forward(req, resp);
 			}
 		} else {
-			req.setAttribute("same-usn-msg", "USN already exists");
+			req.setAttribute("account-not-found", "Account exists");
 			req.getRequestDispatcher("Register.jsp").forward(req, resp);
 		}
 	}

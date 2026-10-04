@@ -11,7 +11,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -23,23 +22,15 @@ public class Login extends HttpServlet {
 			Student s = sdao.getStudentByEmail(req.getParameter("email"));
 			if (s != null) {
 				if (s.getPassword().equals(req.getParameter("password"))) {
-					// req.setAttribute("student-data", s); not needed as we are using sessions now
-					
-					HttpSession session = req.getSession();
-					session.setAttribute("student", s);
-					
-					//resp.sendRedirect("MainDashboard.jsp");
-					
-					req.setAttribute("success-msg", "Login successfull");
+					req.setAttribute("username", s.getName());
 					req.getRequestDispatcher("MainDashboard.jsp").forward(req, resp);
-					
 				} else {
-					req.setAttribute("error-msg", "Password incorrect");
+					req.setAttribute("password-incorrecr", "Password incorrect");
 					req.getRequestDispatcher("Login.jsp").forward(req, resp);
 				}
 			}
 		} catch (NullPointerException e) {
-			req.setAttribute("error-msg", "Account not found");
+			req.setAttribute("account-not-found", "Account not found");
 			req.getRequestDispatcher("Login.jsp").forward(req, resp);
 		}
 
