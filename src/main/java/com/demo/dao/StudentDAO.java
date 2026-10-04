@@ -10,9 +10,9 @@ public interface StudentDAO {
 	
 	public void updateStudent(Student s);
 	
-	public void deleteStudent(Integer id);
+	public void deleteStudent(String id);
 	
-	public Student getStudentBId(Integer id);
+	public Student getStudentById(String id);
 	
 	public Student getStudentByEmail(String email);
 	
