@@ -19,6 +19,7 @@
 		position:fixed;
 		width:100%;
 		text-align:center;
+		margin:0px;
 	}
 </style>
 </head>

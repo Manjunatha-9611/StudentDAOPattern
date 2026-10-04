@@ -23,14 +23,14 @@ body {
 	position: relative;
 	left: 610px;
 	top: 60px;
-	box-shadow:0px 10px 15px -3px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
 table tr {
 	display: grid;
 	grid-template-columns: 300px 200px;
 	padding: 20px;
-	align-items:center;
+	align-items: center;
 }
 
 table {
@@ -67,35 +67,38 @@ input {
 	position: relative;
 	left: 780px;
 	top: 20px;
-	border:2px solid lightgrey;
-	border-radius:10px;
+	border: 2px solid lightgrey;
+	border-radius: 10px;
 	background-color: #A2D5AC;
-	box-shadow:0px 10px 15px -3px rgba(0, 0, 0, 0.5);
+	box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
 #heading h1 {
 	font-size: 30px;
-	margin-left:30px;
-	display:inline-block;
+	margin-left: 30px;
+	display: inline-block;
 }
 
 a {
 	text-decoration: none;
-	position:relative;
-	left:40px;
+	position: relative;
+	left: 40px;
 }
+
 img {
 	width: 80px;
 	height: 80px;
-position:relative;
-	top:23px;
-	left:5px;
+	position: relative;
+	top: 23px;
+	left: 5px;
 }
 </style>
 <body>
 	<div id="heading">
-		<h1>Welcome to SDMS</h1><img src="./image/favicon.png">
-		<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login Form</h1>
+		<h1>Welcome to SDMS</h1>
+		<img src="./image/favicon.png">
+		<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login
+			Form</h1>
 	</div>
 
 	<div id="container">
@@ -121,24 +124,25 @@ position:relative;
 		</form>
 	</div>
 	<%
-		String s = (String) request.getAttribute("password-incorrect");
+	String successMsg = (String) request.getAttribute("success-msg");
+	%>
+	
+	<%
+		String errorMsg = (String) request.getAttribute("error-msg");
+		if (errorMsg != null) {
 		%>
-		<%
-		if (s != null) {
-		%>
-		<h2 style="color: red"><%=s%></h2>
-		<%
-		}
-		%>
-		<%
-		String s1 = (String) request.getAttribute("account-not-found");
-		%>
-		<%
-		if (s1 != null) {
-		%>
-		<h2 style="color: red"><%=s1%></h2>
+		<%=errorMsg%>
 		<%
 		}
 		%>
+	<%-- <%
+	if (successMsg != null) {
+	%>
+	<script>
+		alert("<%=successMsg %>");
+	</script>
+	<%
+	}
+	%> --%>
 </body>
 </html>
